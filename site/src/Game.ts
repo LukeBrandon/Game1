@@ -25,12 +25,9 @@ class Game {
   }
 
 
-
-
 }
 
 const g = new Game();
-
 g.draw();
 
 
