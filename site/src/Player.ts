@@ -3,13 +3,12 @@
 class Player extends Sprite{
     //member variables
     lastTouchCounter: number;
-    collides: boolean;
     direction: string;
 
 
     constructor(){
         super();
-
+        this.lastTouchCounter = 0;
 
     }
 
@@ -21,6 +20,8 @@ class Player extends Sprite{
         //     }
         // }
 
+       this.lastTouchCounter++;
+       
     }
 
     draw(){
