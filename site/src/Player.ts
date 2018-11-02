@@ -1,26 +1,26 @@
+import { Direction, Game } from "./Game";
+import { Sprite } from "./Sprite";
 
+export class Player extends Sprite {
+    // member variables
+    public lastTouchCounter: number;
+    public direction: string;
 
-class Player extends Sprite{
-    //member variables
-    lastTouchCounter: number;
-    direction: string;
-
-    constructor(){
-        super();
+    constructor() {
+        super(100, 100, 100, 100);
         this.lastTouchCounter = 0;
-        
     }
 
-
-    update(){
-        console.log("palyer update");
-
+    public update = () => {
         this.lastTouchCounter++;
-    }//end player update
+        this.x++;
 
-    draw(){
-        //Game.paint.fillStyle = "red";
-        //Game.paint.fillRect(this.x, this.y, 100, 100);
     }
-    
+
+    public draw() {
+        const { x, y, w, h } = this;
+        Game.paint.fillStyle = "red";
+        Game.paint.fillRect(x, y, w, h);
+    }
+
 }

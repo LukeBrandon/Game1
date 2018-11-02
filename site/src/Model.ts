@@ -1,20 +1,22 @@
+import { Game, map} from "./Game";
+import { Player } from "./Player";
 
+export class Model {
+    public player: Player;
 
-class Model{
-    player: Player;
-
-    constructor(){
-        console.log("model constructor");
+    constructor() {
         this.player = new Player();
-
     }
 
-    update(){
-        console.log("model update");
+    public update = () => {
         this.player.update();
-        //this.player.draw();
     }
 
+    public draw = () => {
+        // clear screen
+        Game.paint.fillStyle = "white";
+        Game.paint.fillRect(0, 0, map.width, map.height);
 
-
+        this.player.draw();
+    }
 }
