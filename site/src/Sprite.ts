@@ -36,6 +36,11 @@ abstract class Sprite{
     }
 
 
+    oldPosition(): void{
+        this.prevX = this.x;
+        this.prevY = this.y;
+    }
+
     collides(that: Sprite): boolean{
         if(this.y + this.h <= that.getY()){     //above
             return false;
