@@ -10,14 +10,22 @@ class Game {
         this.canvas.style.top = -(map.height - Game.sh) + "px";
         Game.paint = this.canvas.getContext("2d");
         Game.paint.textAlign = "center";
+        let model = new Model();
+        let controller = new Controller(model);
+        let view = new View(controller, model);
     }
     draw() {
-        Game.paint.fillStyle = "red";
-        Game.paint.fillRect(10, 10, 100, 100);
+    }
+    run() {
+        while (true) {
+            this.controller.update();
+            this.model.update();
+            this.view.paintComponent();
+        }
     }
 }
 Game.sw = window.innerWidth;
 Game.sh = window.innerHeight;
 const g = new Game();
-g.draw();
+g.run();
 //# sourceMappingURL=Game.js.map

@@ -14,7 +14,12 @@
   },
   "lib": ["DOM", "es6"],
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "Player.ts",
+    "Game.ts",
+    "Sprite.ts",
+    "Controller.ts",
+    "Model.ts"
   ],
   "exclude": [
       "node_modules"
