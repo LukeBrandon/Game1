@@ -4,12 +4,13 @@ class Model{
     player: Player;
 
     constructor(){
-        let player = new Player();
+        this.player = new Player();
 
     }
 
     update(){
         console.log("model update");
+        this.player.update();
         //this.player.draw();
     }
 

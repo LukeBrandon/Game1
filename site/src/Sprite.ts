@@ -25,6 +25,7 @@ abstract class Sprite{
     getY(): number{
         return this.y;
     }
+
     getX(): number{
         return this.x;
     }

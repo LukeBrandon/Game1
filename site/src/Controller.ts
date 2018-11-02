@@ -12,8 +12,7 @@ class Controller{
 
 
     constructor(_model: Model){
-        let model = _model;
-
+        this.model = _model;
 
         this.keyRight = false;
         this.keyLeft = false;

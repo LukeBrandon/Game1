@@ -1,9 +1,10 @@
 class Model {
     constructor() {
-        let player = new Player();
+        this.player = new Player();
     }
     update() {
         console.log("model update");
+        this.player.update();
     }
 }
 //# sourceMappingURL=Model.js.map

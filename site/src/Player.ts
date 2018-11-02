@@ -8,7 +8,7 @@ class Player extends Sprite{
     constructor(){
         super();
         this.lastTouchCounter = 0;
-
+        
     }
 
 

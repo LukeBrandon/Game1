@@ -19,6 +19,10 @@ class Sprite {
     getH() {
         return this.h;
     }
+    oldPosition() {
+        this.prevX = this.x;
+        this.prevY = this.y;
+    }
     collides(that) {
         if (this.y + this.h <= that.getY()) {
             return false;

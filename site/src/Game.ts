@@ -24,9 +24,9 @@ class Game {
     Game.paint = this.canvas.getContext("2d");
     Game.paint.textAlign = "center";
 
-    let model = new Model();
-    let controller = new Controller(model);
-    let view = new View(controller, model);
+    this.model = new Model();
+    this.controller = new Controller(this.model);
+    this.view = new View(this.controller, this.model);
   }
 
   draw() {
