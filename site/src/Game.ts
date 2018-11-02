@@ -24,7 +24,6 @@ class Game {
     Game.paint = this.canvas.getContext("2d");
     Game.paint.textAlign = "center";
 
-    console.log("before instantiating model");
     this.model = new Model();
     this.controller = new Controller(this.model);
     this.view = new View(this.controller, this.model);
