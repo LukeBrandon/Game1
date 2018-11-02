@@ -13,7 +13,7 @@ export class Player extends Sprite {
 
     public update = () => {
         this.lastTouchCounter++;
-        this.x++;   //temp
+        //this.x++;   //temp
 
     }
 

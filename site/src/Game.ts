@@ -3,8 +3,8 @@ import { Player } from "./Player";
 import { Controller } from './Controller';
 
 export const map = {
-  height: 1000,
-  width: 1000,
+  height: 500,
+  width: 500,
 };
 
 export enum Direction {

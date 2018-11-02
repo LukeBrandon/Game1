@@ -18,7 +18,7 @@ export class Controller{
     keyboardInput(event: KeyboardEvent){
       console.log(event);
         if(event.keyCode == 37){    //left key pressed
-           this.model.player.
+           this.model.player.x -= 5;
         }
         if(event.keyCode == 38){    //up key pressed
             this.model.player.y -= 5;
