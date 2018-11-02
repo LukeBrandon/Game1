@@ -14,15 +14,9 @@ class Player extends Sprite{
 
     update(){
         console.log("palyer update");
-        // for(let i = 0; i < 100; i++){
-        //     if(this.collides(i)){
-        //         direction = this.pushOut(i);
-        //     }
-        // }
 
-       this.lastTouchCounter++;
-
-    }
+        this.lastTouchCounter++;
+    }//end player update
 
     draw(){
         //Game.paint.fillStyle = "red";

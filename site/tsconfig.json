@@ -1,4 +1,5 @@
 {
+  //"compileOnSave": true,
   "compilerOptions": {
       "module": "commonjs",
       "esModuleInterop": true,
@@ -14,12 +15,7 @@
   },
   "lib": ["DOM", "es6"],
   "include": [
-    "src/**/*",
-    "Player.ts",
-    "Game.ts",
-    "Sprite.ts",
-    "Controller.ts",
-    "Model.ts"
+    "src/**/*"
   ],
   "exclude": [
       "node_modules"
