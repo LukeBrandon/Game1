@@ -1,70 +1,45 @@
-// class Controller{
-//     model: Model;
-//     view : View;
+import { Model } from './Model';
 
-//     keyRight: boolean;
-//     keyLeft: boolean;
-//     keyUp: boolean;
-//     keyDown: boolean;
-//     keySpace: boolean;
+export class Controller{
+    model: Model;
 
-//     constructor(_model: Model){
-//         this.model = _model;
+    keyRight: boolean;
+    keyLeft: boolean;
+    keyUp: boolean;
+    keyDown: boolean;
+    keySpace: boolean;
 
-//         this.keyRight = false;
-//         this.keyLeft = false;
-//     }
+    constructor(_model: Model){
+        console.log("controller constructor");
+        this.model = _model;
+        document.addEventListener("keydown", this.keyboardInput);
+    }
 
-//     setView(v: View){
-//         this.view = v;
-//     }
+    keyboardInput(event: KeyboardEvent){
+      console.log(event);
+        if(event.keyCode == 37){    //left key pressed
+           this.model.player.
+        }
+        if(event.keyCode == 38){    //up key pressed
+            this.model.player.y -= 5;
+        }
+        if(event.keyCode == 39){    //right key pressed
+            this.model.player.x += 5;
+        }
+        if(event.keyCode == 40){    //down key pressed
+            this.model.player.y += 5;
+        }
+        if(event.keyCode == 41){    //spacebar pressed
+            this.keySpace = true;
+        }
+    }
 
-//     keyboardInput(event: KeyboardEvent){
-//         if(event.keyCode == 37){    //left key pressed
-//            this.keyLeft = true;
-//         }
-//         if(event.keyCode == 38){    //up key pressed
-//             this.keyUp = true;
-//         }
-//         if(event.keyCode == 39){    //right key pressed
-//             this.keyRight = true;
-//         }
-//         if(event.keyCode == 40){    //down key pressed
-//             this.keyDown = true;
-//         }
-//         if(event.keyCode == 41){    //spacebar pressed
-//             this.keySpace = true;
-//         }
-//     }
+    update(){
+        if(this.keySpace == true){
+            console.log("pressed key space");
+            this.keySpace = false;
+        }
 
-//     update(){
-//         console.log("controller update");
+    }
 
-//         if(this.keyLeft == true){
-//             this.model.player.x -= 10;
-//             console.log("left key pressed");
-//             this.keyLeft = false;
-//         }
-//         if(this.keyRight == true){
-//             this.model.player.x +=10;
-
-//             this.keyRight = false;
-//         }
-//         if(this.keyUp == true){
-//             this.model.player.y -= 10;
-
-//             this.keyUp = false;
-//         }
-//         if(this.keyDown == true){
-//             this.model.player.y += 10;
-
-//             this.keyDown = false;
-//         }
-//         if(this.keySpace == true){
-//             console.log("pressed key space");
-//             this.keySpace = false;
-//         }
-
-//     }
-
-// }
+}

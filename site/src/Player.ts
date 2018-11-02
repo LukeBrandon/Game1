@@ -13,8 +13,14 @@ export class Player extends Sprite {
 
     public update = () => {
         this.lastTouchCounter++;
-        this.x++;
+        this.x++;   //temp
 
+    }
+
+    public move(dir: Direction) {
+        if (dir === Direction.Up) {
+            this.y++;
+        }
     }
 
     public draw() {

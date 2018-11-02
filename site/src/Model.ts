@@ -3,6 +3,7 @@ import { Player } from "./Player";
 
 export class Model {
     public player: Player;
+    amount: number;
 
     constructor() {
         this.player = new Player();

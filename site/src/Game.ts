@@ -1,5 +1,6 @@
 import { Model } from "./Model";
 import { Player } from "./Player";
+import { Controller } from './Controller';
 
 export const map = {
   height: 1000,
@@ -15,10 +16,9 @@ export class Game {
   public static sw: number = window.innerWidth;
   public static sh: number = window.innerHeight;
   public player: Player;
-  // controller: Controller;
+  public controller: Controller;
   public model: Model;
   private canvas: HTMLCanvasElement;
-  // view: View;
 
   constructor() {
     this.canvas = document.getElementById("myCanvas") as HTMLCanvasElement;
@@ -29,13 +29,7 @@ export class Game {
     Game.paint.textAlign = "center";
 
     this.model = new Model();
-    // this.controller = new Controller(this.model);
-    // this.view = new View(this.controller, this.model);
-  }
-
-  public draw = () => {
-    Game.paint.fillStyle = "red";
-    Game.paint.fillRect(this.model.player.x, this.model.player.y, 100, 100);
+    this.controller = new Controller(this.model);
   }
 
   public run = () => {
