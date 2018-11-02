@@ -4,6 +4,7 @@ class Model{
     player: Player;
 
     constructor(){
+        console.log("model constructor");
         this.player = new Player();
 
     }
