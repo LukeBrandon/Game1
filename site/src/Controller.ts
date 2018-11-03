@@ -1,45 +1,54 @@
-import { Model } from './Model';
+import { Direction } from "./Game";
+import { Model } from "./Model";
 
-export class Controller{
-    model: Model;
+export class Controller {
+  public model: Model;
 
-    keyRight: boolean;
-    keyLeft: boolean;
-    keyUp: boolean;
-    keyDown: boolean;
-    keySpace: boolean;
+  public keyRight: boolean;
+  public keyLeft: boolean;
+  public keyUp: boolean;
+  public keyDown: boolean;
+  public keySpace: boolean;
+  public keys: Set<string> = new Set();
 
-    constructor(_model: Model){
-        console.log("controller constructor");
-        this.model = _model;
-        document.addEventListener("keydown", this.keyboardInput);
+  constructor(model: Model) {
+    this.model = model;
+    document.addEventListener("keydown", (event) => this.keys.add(event.key));
+    document.addEventListener("keyup", (event) => this.keys.delete(event.key));
+  }
+
+  // if (event.keyCode === 37) {
+  //   // left key pressed
+  //   this.model.player.move(Direction.Left);
+  // } else if (event.keyCode === 38) {
+  //   // up key pressed
+  //   this.model.player.move(Direction.Up);
+  // } else if (event.keyCode === 39) {
+  //   // right key pressed
+  //   this.model.player.x += 5;
+  // } else if (event.keyCode === 40) {
+  //   // down key pressed
+  //   this.model.player.y += 5;
+  // } else if (event.keyCode === 41) {
+  //   // spacebar pressed
+  //   this.keySpace = true;
+  // }
+
+  public update() {
+    if (this.keys.has("ArrowUp")) {
+      this.model.player.move(Direction.Up);
     }
 
-    keyboardInput(event: KeyboardEvent){
-      console.log(event);
-        if(event.keyCode == 37){    //left key pressed
-           this.model.player.x -= 5;
-        }
-        if(event.keyCode == 38){    //up key pressed
-            this.model.player.y -= 5;
-        }
-        if(event.keyCode == 39){    //right key pressed
-            this.model.player.x += 5;
-        }
-        if(event.keyCode == 40){    //down key pressed
-            this.model.player.y += 5;
-        }
-        if(event.keyCode == 41){    //spacebar pressed
-            this.keySpace = true;
-        }
+    if (this.keys.has("ArrowDown")) {
+      this.model.player.move(Direction.Down);
     }
 
-    update(){
-        if(this.keySpace == true){
-            console.log("pressed key space");
-            this.keySpace = false;
-        }
-
+    if (this.keys.has("ArrowLeft")) {
+      this.model.player.move(Direction.Left);
     }
 
+    if (this.keys.has("ArrowRight")) {
+      this.model.player.move(Direction.Right);
+    }
+  }
 }

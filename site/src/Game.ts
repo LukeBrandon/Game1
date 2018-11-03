@@ -1,6 +1,6 @@
+import { Controller } from "./Controller";
 import { Model } from "./Model";
 import { Player } from "./Player";
-import { Controller } from './Controller';
 
 export const map = {
   height: 500,
@@ -8,7 +8,10 @@ export const map = {
 };
 
 export enum Direction {
-  Left, Right, Up, Down,
+  Left,
+  Right,
+  Up,
+  Down,
 }
 
 export class Game {
@@ -36,6 +39,7 @@ export class Game {
     setInterval(() => {
       this.model.draw();
       this.model.update();
+      this.controller.update();
     }, 100);
   }
 }
