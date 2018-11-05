@@ -2,13 +2,17 @@ import { Direction, Game } from "./Game";
 import { Sprite } from "./Sprite";
 
 export class Player extends Sprite {
-    // member variables
     public lastTouchCounter: number;
+    private imgSize = 20;
     private moveSpeed = 8;
+    private image: HTMLImageElement;
 
     constructor() {
-        super(100, 100, 100, 100);
+        super(100, 100, 100, 200);
         this.lastTouchCounter = 0;
+        this.image = new Image();
+        this.image.src = "img/player.png";
+        this.image.height = this.imgSize;
         this.move = this.move.bind(this);
     }
 
@@ -29,9 +33,8 @@ export class Player extends Sprite {
     }
 
     public draw() {
-        const { x, y, w, h } = this;
-        Game.paint.fillStyle = "red";
-        Game.paint.fillRect(x, y, w, h);
+        const { x, y, w, h, image } = this;
+        Game.paint.drawImage(image, x, y, w, h);
     }
 
 }

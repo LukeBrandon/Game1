@@ -25,12 +25,11 @@ export class Game {
 
   constructor() {
     this.canvas = document.getElementById("myCanvas") as HTMLCanvasElement;
-    this.canvas.width = map.width;
-    this.canvas.height = map.height;
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
     this.canvas.style.top = -(map.height - Game.sh) + "px";
     Game.paint = this.canvas.getContext("2d");
     Game.paint.textAlign = "center";
-
     this.model = new Model();
     this.controller = new Controller(this.model);
   }
@@ -40,7 +39,7 @@ export class Game {
       this.model.draw();
       this.model.update();
       this.controller.update();
-    }, 100);
+    }, 10);
   }
 }
 

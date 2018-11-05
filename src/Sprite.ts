@@ -11,8 +11,8 @@ export abstract class Sprite {
     constructor(x: number, y: number, w: number, h: number) {
         this.x = x || 0;
         this.y = y || 0;
-        this.h = w || 0;
-        this.w = h || 0;
+        this.w = w || 0;
+        this.h = h || 0;
         this.prevX = 0;
         this.prevY = 0;
     }
