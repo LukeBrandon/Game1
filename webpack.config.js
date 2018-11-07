@@ -1,8 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/Game.ts',
+  entry: './app/client/Game.ts',
   watch: true,
+  mode: "development",
   devtool: 'eval-source-map',
   module: {
     rules: [
@@ -18,6 +19,6 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'app/public')
   }
 };

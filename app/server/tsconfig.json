@@ -1,6 +1,7 @@
 {
   //"compileOnSave": true,
   "compilerOptions": {
+      "module": "commonjs",
       "esModuleInterop": true,
       "noImplicitAny": true,
       "experimentalDecorators": true,
@@ -11,8 +12,12 @@
       "allowSyntheticDefaultImports": true,
       "sourceMap": true,
       "target": "ES6",
+      "outDir": "./bin",
   },
   "lib": ["DOM", "es6"],
+  "include": [
+    "*"
+  ],
   "exclude": [
       "node_modules"
   ]

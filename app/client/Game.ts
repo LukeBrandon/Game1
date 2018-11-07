@@ -1,6 +1,7 @@
 import { Controller } from "./Controller";
 import { Model } from "./Model";
 import { Player } from "./Player";
+import "./Socket";
 
 export const map = {
   height: 500,
