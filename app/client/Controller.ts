@@ -19,19 +19,19 @@ export class Controller {
 
   public update() {
     if (this.keys.has("ArrowUp")) {
-      this.model.player.move(Direction.Up);
+      this.model.players[0].move(Direction.Up);
     }
 
     if (this.keys.has("ArrowDown")) {
-      this.model.player.move(Direction.Down);
+      this.model.players[0].move(Direction.Down);
     }
 
     if (this.keys.has("ArrowLeft")) {
-      this.model.player.move(Direction.Left);
+      this.model.players[0].move(Direction.Left);
     }
 
     if (this.keys.has("ArrowRight")) {
-      this.model.player.move(Direction.Right);
+      this.model.players[0].move(Direction.Right);
     }
   }
 }

@@ -16,9 +16,13 @@ const port = 3005;
 const server = http_1.createServer(app);
 const io = socket_io_1.default(server);
 server.listen(3001);
-io.on("connection", () => {
+io.on("connection", (socket) => {
     log.info("A user connected");
     io.emit("New user", { id: Math.random() });
+    socket.on("I Move", (data) => {
+        log.info(data);
+        io.emit("It Move", data);
+    });
 });
 app.use("/", express_1.default.static(path_1.default.join(__dirname, "../../public")));
 app.listen(port, () => log.info(`App listening on port ${port}!`));

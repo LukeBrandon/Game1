@@ -11,14 +11,22 @@ const log = bunyan.createLogger({
 const app = express();
 const port = 3005;
 
+
 const server = createServer(app);
 const io = socketIO(server);
 server.listen(3001);
 
-io.on("connection", () => {
+io.on("connection", (socket) => {
   log.info("A user connected");
   io.emit("New user", {id: Math.random()});
+
+  socket.on("I Move", (data: any) => {
+    log.info(data)
+    io.emit("It Move", data);
+  })
 });
+
+
 
 app.use("/", express.static(path.join(__dirname, "../../public")));
 

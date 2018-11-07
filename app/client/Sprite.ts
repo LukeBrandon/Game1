@@ -1,3 +1,5 @@
+import { Paint } from "./Paint";
+
 export abstract class Sprite {
     // member variables
     public x: number;
@@ -18,7 +20,7 @@ export abstract class Sprite {
     }
 
     public abstract update(): void;
-    public abstract draw(): void;
+    public abstract draw(paint: Paint): void;
 
     public getY(): number {
         return this.y;
