@@ -1,0 +1,25 @@
+{
+  //"compileOnSave": true,
+  "compilerOptions": {
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "noImplicitAny": true,
+      "experimentalDecorators": true,
+      "pretty": true,
+      "strict": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "removeComments": true,
+      "preserveConstEnums": false,
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "target": "ES6",
+      "outDir": "./bin",
+  },
+  "lib": ["DOM", "es6"],
+  "include": [
+    "*.ts", "types/*"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
+}

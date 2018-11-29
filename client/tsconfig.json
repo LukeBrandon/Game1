@@ -1,0 +1,20 @@
+{
+  //"compileOnSave": true,
+  "compilerOptions": {
+      "esModuleInterop": true,
+      "noImplicitAny": true,
+      "experimentalDecorators": true,
+      "pretty": true,
+      "strict": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "removeComments": true,
+      "preserveConstEnums": false,
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "target": "ES6",
+  },
+  "lib": ["DOM", "es6"],
+  "exclude": [
+      "node_modules"
+  ]
+}
