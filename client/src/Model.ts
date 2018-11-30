@@ -43,6 +43,7 @@ export class Model {
             if (player.id !== this.mainPlayer.id) {
                 const p = new Player(this.socket);
                 p.setId(player.id);
+                p.setPos(player);
                 this.players.push(p);
             }
         }
