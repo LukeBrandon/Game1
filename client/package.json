@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start:dev": "npm-run-all --parallel local build:dev watch:lint",
+    "start:dev": "npm-run-all --parallel local build:dev",
     "start": "google-chrome index.html",
     "build:dev": "webpack",
     "lint": "tslint --format prose src/**/*.ts --force",

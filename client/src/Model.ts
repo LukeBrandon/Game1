@@ -1,12 +1,16 @@
 import { Player } from "./Player";
+import { Sprite } from "./GameObjects/Sprite";
+import { Block } from "./Gameobjects/Block";
 
 export class Model {
     public players: Player[] = [];
     public readonly mainPlayer: Player;
     public socket: SocketIOClient.Socket;
+    public sprites: Sprite[] = [    ];
+
 
     constructor(socket: SocketIOClient.Socket) {
-        this.mainPlayer = new Player(socket);
+        this.mainPlayer = new Player(socket, this);
         this.players.push(this.mainPlayer);
         this.socket = socket;
         this.socket.on("allPlayers", this.setPlayers.bind(this));
@@ -14,12 +18,23 @@ export class Model {
         this.socket.on("userMove", this.setPlayerPos.bind(this));
         this.socket.on("userDisconnect", this.removeUser.bind(this));
 
+        this.addBrick();
     }
 
-    public update = () => {
+    public update() {
+        //updating players
         for (const player of this.players) {
             player.update();
         }
+        //updating sprites
+        for (const sprite of this.sprites) {
+            sprite.update();
+        }
+    }   
+
+    public addBrick() {
+        const block = new Block();
+        this.sprites.push(block);
     }
 
     public setMainId(id: string) {
@@ -27,7 +42,7 @@ export class Model {
     }
 
     public newUser(id: string) {
-        const p = new Player(this.socket);
+        const p = new Player(this.socket, this);
         p.setId(id);
         this.players.push(p);
     }
@@ -41,7 +56,7 @@ export class Model {
         this.players.push(this.mainPlayer);
         for (const player of data) {
             if (player.id !== this.mainPlayer.id) {
-                const p = new Player(this.socket);
+                const p = new Player(this.socket, this);
                 p.setId(player.id);
                 p.setPos(player);
                 this.players.push(p);

@@ -30,5 +30,8 @@ export class Paint {
     for (const player of this.model.players) {
       player.draw(this);
     }
+    for (const sprite of this.model.sprites) {
+      sprite.draw(this);
+    }
   }
 }

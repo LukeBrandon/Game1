@@ -1,17 +1,20 @@
-import { Direction, Game } from "./Game";
+import { Game } from "./Game";
 import { Paint } from "./Paint";
-import { Sprite } from "./Sprite";
+import { Sprite } from "./Gameobjects/Sprite";
+import { Block } from "./Gameobjects/Block"
+import { Model } from "./Model";
 
 export class Player extends Sprite {
     public id: string = "-1";
-    public lastTouchCounter: number = 0;
     public socket: SocketIOClient.Socket;
     private imgSize = 20;
-    private moveSpeed = 8;
+    public moveSpeed = 4;
+    public model: Model;
     private image: HTMLImageElement = new Image();
 
-    constructor(socket: SocketIOClient.Socket) {
+    constructor(socket: SocketIOClient.Socket, model: Model) {
         super(300, 100, 100, 200);
+        this.model = model;
         this.image.src = "img/player.png";
         this.image.height = this.imgSize;
         this.move = this.move.bind(this);
@@ -31,19 +34,26 @@ export class Player extends Sprite {
     }
 
     public update = () => {
-        this.lastTouchCounter++;
+        //iterating sprites
+        for (const sprite of this.model.sprites){
+
+            //checking if colliding with the sprite
+            if(this.collides(sprite)){
+                const direction = this.pushOut(sprite); //gets direction of collision
+
+                //if block
+                if(sprite.type == "block"){
+                    (sprite as Block).playerHit(this);
+                }
+
+                //if enemy
+                
+            }
+        }
     }
 
-    public move(dir: Direction) {
-        if (dir === Direction.Up) {
-            this.y -= this.moveSpeed;
-        } else if (dir === Direction.Left) {
-            this.x -= this.moveSpeed;
-        } else if (dir === Direction.Down) {
-            this.y += this.moveSpeed;
-        } else if (dir === Direction.Right) {
-            this.x += this.moveSpeed;
-        }
+    public movePlayer(x:number, y:number) {
+        this.move(x * this.moveSpeed, y * this.moveSpeed);
         this.socket.emit("iMove", {
             id: this.id,
             x: this.x,

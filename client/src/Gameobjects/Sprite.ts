@@ -1,4 +1,4 @@
-import { Paint } from "./Paint";
+import { Paint } from "../Paint";
 
 export abstract class Sprite {
     // member variables
@@ -8,6 +8,7 @@ export abstract class Sprite {
     public w: number;
     public prevX: number;
     public prevY: number;
+    public type: string;
 
     constructor(x: number, y: number, w: number, h: number) {
         this.x = x || 0;
@@ -16,10 +17,19 @@ export abstract class Sprite {
         this.h = h || 0;
         this.prevX = 0;
         this.prevY = 0;
+        this.type = "undefined";
     }
 
     public abstract update(): void;
     public abstract draw(paint: Paint): void;
+
+    public get vx(): number {
+        return this.prevX - this.x;
+    }
+
+    public get vy(): number {
+        return this.prevY - this.y;
+    }
 
     public getY(): number {
         return this.y;
@@ -37,6 +47,12 @@ export abstract class Sprite {
     public oldPosition(): void {
         this.prevX = this.x;
         this.prevY = this.y;
+    }
+
+    public move(x: number, y: number): void {
+        this.oldPosition();
+        this.x += x;
+        this.y += y;
     }
 
     public collides(that: Sprite): boolean {

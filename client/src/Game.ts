@@ -3,13 +3,6 @@ import { Controller } from "./Controller";
 import { Model } from "./Model";
 import { Paint } from "./Paint";
 
-export enum Direction {
-  Left,
-  Right,
-  Up,
-  Down,
-}
-
 export class Game {
   public controller: Controller;
   public model: Model;

@@ -1,4 +1,3 @@
-import { Direction } from "./Game";
 import { Model } from "./Model";
 
 export class Controller {
@@ -14,19 +13,19 @@ export class Controller {
 
   public update() {
     if (this.keys.has("ArrowUp")) {
-      this.model.mainPlayer.move(Direction.Up);
+      this.model.mainPlayer.movePlayer(0, -1);
     }
 
     if (this.keys.has("ArrowDown")) {
-      this.model.mainPlayer.move(Direction.Down);
+      this.model.mainPlayer.movePlayer(0 , 1);
     }
 
     if (this.keys.has("ArrowLeft")) {
-      this.model.mainPlayer.move(Direction.Left);
+      this.model.mainPlayer.movePlayer(-1, 0);
     }
 
     if (this.keys.has("ArrowRight")) {
-      this.model.mainPlayer.move(Direction.Right);
+      this.model.mainPlayer.movePlayer(1, 0);
     }
   }
 }
