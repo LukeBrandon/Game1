@@ -1,17 +1,24 @@
-import { Player } from "./Player";
-import { Sprite } from "./GameObjects/Sprite";
 import { Block } from "./Gameobjects/Block";
+import { Spider } from "./Gameobjects/Spider";
+import { Sprite } from "./GameObjects/Sprite";
+import { Player } from "./Player";
+
 
 export class Model {
     public players: Player[] = [];
     public readonly mainPlayer: Player;
+    public spider: Spider;
     public socket: SocketIOClient.Socket;
     public sprites: Sprite[] = [    ];
-
 
     constructor(socket: SocketIOClient.Socket) {
         this.mainPlayer = new Player(socket, this);
         this.players.push(this.mainPlayer);
+
+        this.spider = new Spider(socket, this);
+        this.sprites.push(this.spider);
+        this.sprites.push(this.mainPlayer);
+
         this.socket = socket;
         this.socket.on("allPlayers", this.setPlayers.bind(this));
         this.socket.on("newUser", this.newUser.bind(this));
@@ -22,15 +29,15 @@ export class Model {
     }
 
     public update() {
-        //updating players
+        // updating players
         for (const player of this.players) {
             player.update();
         }
-        //updating sprites
+        // updating sprites
         for (const sprite of this.sprites) {
             sprite.update();
         }
-    }   
+    }
 
     public addBrick() {
         const block = new Block();

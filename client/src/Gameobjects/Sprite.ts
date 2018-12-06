@@ -1,4 +1,5 @@
 import { Paint } from "../Paint";
+import { Player } from "../Player";
 
 export abstract class Sprite {
     // member variables
@@ -9,6 +10,9 @@ export abstract class Sprite {
     public prevX: number;
     public prevY: number;
     public type: string;
+    public isMoveable: boolean;
+    public health: number;
+    public knockbackVal: number;
 
     constructor(x: number, y: number, w: number, h: number) {
         this.x = x || 0;
@@ -18,6 +22,9 @@ export abstract class Sprite {
         this.prevX = 0;
         this.prevY = 0;
         this.type = "undefined";
+        this.health = 10;
+        this.knockbackVal = 10;
+        this.isMoveable = false;
     }
 
     public abstract update(): void;
@@ -96,5 +103,85 @@ export abstract class Sprite {
             return "not";
               }
     }
+
+    public knockback(that: Sprite): string {
+        const spriteKnockback = that.knockbackVal;
+        // entering from top
+        if (this.y + this.h >= that.getY() && !(this.prevY + this.h > that.getY())) {
+            this.y = that.getY() - this.h - spriteKnockback;
+            return "top";
+
+        // entering from bottom
+        } else if (this.y <= that.getY() + that.getH() && !(this.prevY < that.getY() + that.getH())) {
+            this.y = that.getY() + that.getH() + 3 + spriteKnockback;
+            return "bottom";
+
+        // entering from left
+        } else if (this.x + this.w >= that.getX() && !(this.prevX + this.w > that.getX()) ) {
+            this.x = that.getX()  - this.w - spriteKnockback;
+            return "left";
+
+        // entering from right
+        } else if (this.x <= (that.getX() + that.getW()) && !(this.prevX < (that.getX() + that.getW()) )) {
+            this.x = that.getX() + that.getW() + spriteKnockback;
+            return "right";
+
+        } else {
+            return "not";
+              }
+    }
+
+    public collisionDirection(that: Sprite): string {
+        // entering from top
+        if (this.y + this.h >= that.getY() && !(this.prevY + this.h > that.getY())) {
+            return "top";
+
+        // entering from bottom
+        } else if (this.y <= that.getY() + that.getH() && !(this.prevY < that.getY() + that.getH())) {
+            return "bottom";
+
+        // entering from left
+        } else if (this.x + this.w >= that.getX() && !(this.prevX + this.w > that.getX()) ) {
+            return "left";
+
+        // entering from right
+        } else if (this.x <= (that.getX() + that.getW()) && !(this.prevX < (that.getX() + that.getW()) )) {
+            return "right";
+
+        } else {
+            return "not";
+              }
+    }
+
+    public playerHit(player: Player, direction: string) {
+        if (direction === "left") {
+          this.x = player.x + player.w;
+        } else if (direction === "right") {
+          this.x = player.x - this.w;
+        } else if (direction === "top") {
+          this.y = player.y + player.h;
+        } else if (direction === "bottom") {
+          this.y = player.y - this.h;
+        } else {
+          console.log("invalid direction on playerHit");
+        }
+
+      // frick all this tyler
+        // const px = player.x - player.w / 2;
+        // const py = player.y - player.h / 2;
+        // const bx = this.x - this.w / 2;
+        // const by = this.y - this.h / 2;
+        // const dx = px - bx;
+        // const dy = py - by;
+        // const len = (dx**2 + dy**2) ** 0.5;
+        // const mx = dx / len * 2;
+        // const my = dy / len * 2;
+        // this.move(-mx, -my)
+        // if (Math.abs(mx) > Math.abs(my)) {
+        //   this.move(-mx, 0);
+        // } else {
+        //   this.move(0, -my);
+        // }
+      }
 
 }
