@@ -36,16 +36,22 @@ export class Spider extends Enemy {
 
         // colliding with objects
         // add knockback to this loop
-        /*
+
         for (const sprite of this.model.sprites) {
             if (this.collides(sprite)) {
-                console.log("colliding");
-
-                // if (sprite.type === "player") {
-                //     this.knockback(sprite);
-                // }
+                // console.log("colliding");
 
                 const direction = this.collisionDirection(sprite);
+
+                // if collidnig with the player
+                if (sprite.type === "player") {
+                    if (direction === "right" || direction === "left") {
+                        this.dx *= -1;
+                    }
+                    if (direction === "top" || direction === "bottom") {
+                        this.dy *= -1;
+                    }
+                }
 
                 if (direction === "right" || direction === "left") {
                     this.pushOut(sprite);
@@ -58,7 +64,7 @@ export class Spider extends Enemy {
                 }
             }
         }
-        */
+
     }
 
     public draw(paint: Paint) {

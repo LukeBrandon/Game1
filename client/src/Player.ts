@@ -13,7 +13,7 @@ export class Player extends Sprite {
     private image: HTMLImageElement = new Image();
 
     constructor(socket: SocketIOClient.Socket, model: Model) {
-        super(300, 100, 100, 200);
+        super(500, 500, 100, 200);
         this.health = 50;
         this.knockbackVal = 100;
         this.model = model;
@@ -58,7 +58,7 @@ export class Player extends Sprite {
 
                 // pushes out for all other collisions besides moveable ones
                 const direction = this.pushOut(sprite); // gets direction of collision
-                console.log("collided with " + sprite.type + " on the " + direction);
+                // console.log("collided with " + sprite.type + " on the " + direction);
             }
         }
     }

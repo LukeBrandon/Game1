@@ -3,7 +3,6 @@ import { Spider } from "./Gameobjects/Spider";
 import { Sprite } from "./GameObjects/Sprite";
 import { Player } from "./Player";
 
-
 export class Model {
     public players: Player[] = [];
     public readonly mainPlayer: Player;
